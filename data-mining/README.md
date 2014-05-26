@@ -9,8 +9,7 @@ Data Mining
   - [K Nearest Neighbours (kNN)](knn.md): Hastie, T. and Tibshirani, R. 1996. Discriminant Adaptive Nearest Neighbor Classification.
   - [Naive Bayes](naivebayes.md): Hand, D.J., Yu, K. 2001. Idiot's Bayes: Not So Stupid After All?
 - Statistical Learning
-  - [SVM](svm.md): Vapnik, V. N. 1995. The Nature of Statistical Learning.
-Theory
+  - [SVM](svm.md): Vapnik, V. N. 1995. The Nature of Statistical Learning Theory.
   - [EM](em.md): McLachlan, G. and Peel, D. 2000. Finite Mixture Models. 
 - Association Analysis
   - [Apriori](apriori.md): Rakesh Agrawal and Ramakrishnan Srikant. 1994. Fast Algorithms for Mining Association Rules
