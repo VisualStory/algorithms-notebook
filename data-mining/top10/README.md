@@ -1,7 +1,7 @@
-Data Mining
+Top 10 Algorithms in Data Mining
 ===========
 
-### Top 10 Algorithms in Data Mining
+### Contents
 
 - Classification
   - [C4.5](c45.md): Quinlan, J. R. 1993. C4.5: Programs for Machine Learning.
