@@ -4,10 +4,10 @@ algorithms-notebook
 ### Contents
 
 - Data Structures
-- [Sorting](sorting/README.md)
-- [Searching](searching/README.md)
-- [Graphs](graphs/README.md)
-- [Strings](strings/README.md)
+- [Sorting](sorting)
+- [Searching](searching)
+- [Graphs](graphs)
+- [Strings](strings)
 
 ### Resources
 
