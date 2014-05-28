@@ -4,10 +4,11 @@ algorithms-notebook
 ### Contents
 
 - Data Structures
-- [Sorting](sorting)
-- [Searching](searching)
-- [Graphs](graphs)
-- [Strings](strings)
+- [Sorting](sorting/)
+- [Searching](searching/)
+- [Graphs](graphs/)
+- [Strings](strings/)
+- [Data Mining](data-mining/)
 
 ### Resources
 
