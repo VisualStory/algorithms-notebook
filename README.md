@@ -9,7 +9,8 @@ algorithms-notebook
 - [Graphs](graphs/)
 - [Strings](strings/)
 - [Data Mining](data-mining/)
-
+- [Advance Machine Learning](machine-learning/)
+- 
 ### Resources
 
 - [程序员编程艺术](https://github.com/julycoding/The-Art-Of-Programming-By-July) by July
