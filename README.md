@@ -9,7 +9,7 @@ algorithms-notebook
 - [Graphs](graphs/)
 - [Strings](strings/)
 - [Data Mining](data-mining/)
-- [Advance Machine Learning](machine-learning/)
+- [Advance Machine Learning](ml/)
 
 ### Resources
 
