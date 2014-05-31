@@ -50,6 +50,7 @@ Instead of using risk functions to choose splits, CART uses a impurity function 
 ![\Delta{I}=p(A)I(A)-p(A_L)I(A_L)-p(A_R)I(A_R)](http://latex.codecogs.com/gif.latex?%5CDelta%7BI%7D%3Dp%28A%29I%28A%29-p%28A_L%29I%28A_L%29-p%28A_R%29I%28A_R%29) should be maximized by choosing a suitable split.
 
 There are 2 impurity functions:
+
 1. Information Entropy
 2. Gini Index
 
