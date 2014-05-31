@@ -80,7 +80,7 @@ There are 2 impurity functions:
 
 ## Cost Complexity Pruning
 
-![R(T)=\sum_{i=1}^kp(T_i)R(T_i)] where T1, T2, ..., Tk are terminal nodes of a Tree T and |T| is the number of terminal nodes.
+![R(T)=\sum_{i=1}^kp(T_i)R(T_i)](http://latex.codecogs.com/gif.latex?R%28T%29%3D%5Csum_%7Bi%3D1%7D%5Ekp%28T_i%29R%28T_i%29) where T1, T2, ..., Tk are terminal nodes of a Tree T and |T| is the number of terminal nodes.
 
 ### Cost for the Tree
 
