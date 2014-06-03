@@ -3,9 +3,13 @@ Advance Machine Learning
 
 ### Contents
 
-- LDA
-- pLSA
-- SVM
-- GBDT
-- GMM
-- HMM
+- Clustering
+  - EM
+  - GMM
+- Probabilistic Language Modeling
+  - LDA
+  - pLSA
+  - HMM
+- Tree Ensembles
+  - GBDT
+  - Random Forest
