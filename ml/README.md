@@ -11,5 +11,10 @@ Advance Machine Learning
   - pLSA
   - HMM
 - Tree Ensembles
-  - GBDT
+  - GBDT/MART
   - Random Forest
+- Recommendation
+  - CF
+  - ALS
+  - SVD
+  - MF
