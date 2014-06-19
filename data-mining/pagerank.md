@@ -11,10 +11,11 @@ How do we define the importance of a page (rank):
 Let
 
 - R(i) be the rank of a page i
-- B be the set of pages which link to page i
-- O be the set of pages which page i links to
-- N be the number of pages which page i links to
-- E be the set of links in the form of (i, j)
+- N(i) be the number of pages which page i links to
+- B(i) (back) be the set of pages which link to page i
+- O(i) (out) be the set of pages which page i links to
+- V (vertex) be the set of all pages
+- E (edge) be the set of links in the form of (i, j)
 - n be the total number of pages
 
 then
@@ -54,6 +55,10 @@ Recall the eigenvalue and eigenvector in linear algebra
 where λ is the eigenvalue and the solution of x (in our case R) is the eigenvector. Thus for the equation
 
 ![R=cA^TR](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%3DcA%5ETR)
+
+which equals to
+
+![\frac{1}{c}R=A^TR](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bc%7DR%3DA%5ETR)
 
 R is the eigenvector of A with eigenvalue equals to 1/c.
 
