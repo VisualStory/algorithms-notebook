@@ -29,7 +29,7 @@ To normalize the rank, add a constant c
 
 ![R(i)=c\sum_{j\in B(i)} \frac{R(j)}{N(j)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%28i%29%3Dc%5Csum_%7Bj%5Cin%20B%28i%29%7D%20%5Cfrac%7BR%28j%29%7D%7BN%28j%29%7D)
 
-which in the original paper is
+which is equivalent to the formula given in the paper
 
 ![R(u)=c\sum_{v\in B_u}\frac{R(v)}{N_v}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%28u%29%3Dc%5Csum_%7Bv%5Cin%20B_u%7D%5Cfrac%7BR%28v%29%7D%7BN_v%7D)
 
@@ -51,7 +51,7 @@ Recall the eigenvalue and eigenvector in linear algebra
 
 ![Ax=\lambda x](http://latex.codecogs.com/gif.latex?%5Cbg_white%20Ax%3D%5Clambda%20x)
 
-where ? is the eigenvalue and the solution of x (in our case R) is the eigenvector. Thus for the equation
+where λ is the eigenvalue and the solution of x (in our case R) is the eigenvector. Thus for the equation
 
 ![R=cA^TR](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%3DcA%5ETR)
 
