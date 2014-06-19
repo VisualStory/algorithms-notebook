@@ -64,9 +64,9 @@ R is the eigenvector of A with eigenvalue equals to 1/c.
 
 We use **power iteration** to get the value of R.
 
-![R_{\infty}=\lim_{n\rightarrow\infty}A^nX](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R_%7B%5Cinfty%7D%3D%5Clim_%7Bn%5Crightarrow%5Cinfty%7DA%5EnX)
+![R_{\infty}=\lim_{n\rightarrow\infty}M^nX](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R_%7B%5Cinfty%7D%3D%5Clim_%7Bn%5Crightarrow%5Cinfty%7DM%5EnX)
 
-where ![A=dP+(1-d)\frac{E}{N}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20A%3DdP&plus;%281-d%29%5Cfrac%7BE%7D%7BN%7D)
+where ![M=(1-d)\frac{E}{n}+dA^T](http://latex.codecogs.com/gif.latex?%5Cbg_white%20M%3D%281-d%29%5Cfrac%7BE%7D%7Bn%7D&plus;dA%5ET)
 
 ### Power Iteration
 
