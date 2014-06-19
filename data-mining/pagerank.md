@@ -114,6 +114,10 @@ which we can rewrite as
 
 where 1 is the vector consisting of all ones and R is an eigenvector of (A+Ex1).
 
+In the Google patent, the formula is
+
+![r(A)=\frac{\alpha}{N}+(1-\alpha)\left(\frac{r(B_1)}{|B_1|}+\cdots+\frac{r(B_n)}{|B_n|}\right)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20r%28A%29%3D%5Cfrac%7B%5Calpha%7D%7BN%7D&plus;%281-%5Calpha%29%5Cleft%28%5Cfrac%7Br%28B_1%29%7D%7B%7CB_1%7C%7D&plus;%5Ccdots&plus;%5Cfrac%7Br%28B_n%29%7D%7B%7CB_n%7C%7D%20%5Cright%20%29)
+
 ### Compute PageRank
 
 Let S be almost any vector over Web pages (for example E)
