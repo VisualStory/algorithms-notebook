@@ -52,7 +52,7 @@ Recall the eigenvalue and eigenvector in linear algebra
 
 ![Ax=\lambda x](http://latex.codecogs.com/gif.latex?%5Cbg_white%20Ax%3D%5Clambda%20x)
 
-where λ is the eigenvalue and the solution of x (in our case R) is the eigenvector. Thus for the equation
+where  is the eigenvalue and the solution of x (in our case R) is the eigenvector. Thus for the equation
 
 ![R=cA^TR](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%3DcA%5ETR)
 
@@ -98,7 +98,11 @@ where E is an nxn square matrix of all 1's. Assume that A is already an stochast
 
 ![R(i)=(1-d)+d\sum_{j=1}^{n}A_{ji}R(j)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%28i%29%3D%281-d%29&plus;d%5Csum_%7Bj%3D1%7D%5E%7Bn%7DA_%7Bji%7DR%28j%29)
 
-which is equivalent to the formula given in the paper
+which is equivalent to the formula given in [paper 2]
+
+![PR(A)=(1-d)+d\left(\frac{PR(T1)}{C(T1)}+\cdots+\frac{PR(Tn)}{C(Tn)}\right)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20PR%28A%29%3D%281-d%29&plus;d%5Cleft%28%5Cfrac%7BPR%28T1%29%7D%7BC%28T1%29%7D&plus;%5Ccdots&plus;%5Cfrac%7BPR%28Tn%29%7D%7BC%28Tn%29%7D%5Cright%29)
+
+The formula in [paper 1] is
 
 ![R'(u)=c\sum_{v\in B_u}\frac{R'(v)}{N_v}+cE(u)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R%27%28u%29%3Dc%5Csum_%7Bv%5Cin%20B_u%7D%5Cfrac%7BR%27%28v%29%7D%7BN_v%7D&plus;cE%28u%29)
 
@@ -136,3 +140,8 @@ Loop:
 
 while ![\delta>\epsilon](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cdelta%3E%5Cepsilon)
 
+### Reference
+
+1. Page, L., Brin, S., Motwani, R., and Winograd, T. (1999). The PageRank citation ranking: Bringing order to the Web. published as a *technical report* on January 29, 1998.
+2. Brin, S., Page, L. (1998). The anatomy of a large-scale hypertextual Web search engine. *Computer Networks and ISDN Systems 30*, 107-117.
+3. Lawrence Page, U.S. patents 6,799,176 (2004) "Method for scoring documents in a linked database".
