@@ -64,6 +64,10 @@ R is the eigenvector of A with eigenvalue equals to 1/c.
 
 We use **power iteration** to get the value of R.
 
+![R_{\infty}=\lim_{n\rightarrow\infty}A^nX](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R_%7B%5Cinfty%7D%3D%5Clim_%7Bn%5Crightarrow%5Cinfty%7DA%5EnX)
+
+where ![A=dP+(1-d)\frac{E}{N}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20A%3DdP&plus;%281-d%29%5Cfrac%7BE%7D%7BN%7D)
+
 ### Power Iteration
 
 A must satisfy two conditions such that 1 is the largest eigenvalue and R is the *principal eigenvector*:
@@ -118,11 +122,17 @@ which we can rewrite as
 
 where 1 is the vector consisting of all ones and R is an eigenvector of (A+Ex1).
 
+The formulat in [paper 3] is
+
+![r(i)=d\sum_{j\inB(i)}\frac{r(j)}{N(j)}+(1-d)\frac{1}{m}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20r%28i%29%3Dd%5Csum_%7Bj%5CinB%28i%29%7D%5Cfrac%7Br%28j%29%7D%7BN%28j%29%7D&plus;%281-d%29%5Cfrac%7B1%7D%7Bm%7D)
+
 In the Google patent, the formula is
 
 ![r(A)=\frac{\alpha}{N}+(1-\alpha)\left(\frac{r(B_1)}{|B_1|}+\cdots+\frac{r(B_n)}{|B_n|}\right)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20r%28A%29%3D%5Cfrac%7B%5Calpha%7D%7BN%7D&plus;%281-%5Calpha%29%5Cleft%28%5Cfrac%7Br%28B_1%29%7D%7B%7CB_1%7C%7D&plus;%5Ccdots&plus;%5Cfrac%7Br%28B_n%29%7D%7B%7CB_n%7C%7D%20%5Cright%20%29)
 
 ### Compute PageRank
+
+The algorithm in [paper 1] is
 
 Let S be almost any vector over Web pages (for example E)
 
@@ -130,7 +140,7 @@ Let S be almost any vector over Web pages (for example E)
 
 Loop:
 
-![R_i+1\leftarrow AR_i](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R_i&plus;1%5Cleftarrow%20AR_i)
+![R_{i+1}\leftarrow AR_i](http://latex.codecogs.com/gif.latex?%5Cbg_white%20R_%7Bi&plus;1%7D%5Cleftarrow%20AR_i)
 
 ![d\leftarrow \|R_i\|_1-\|R_{i+1}\|_1](http://latex.codecogs.com/gif.latex?%5Cbg_white%20d%5Cleftarrow%20%5C%7CR_i%5C%7C_1-%5C%7CR_%7Bi&plus;1%7D%5C%7C_1)
 
@@ -140,8 +150,19 @@ Loop:
 
 while ![\delta>\epsilon](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cdelta%3E%5Cepsilon)
 
+The power algorithm in [paper 3] is
+
+![(1)\ s\leftarrow \textrm{any random vector}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%281%29%5C%20s%5Cleftarrow%20%5Ctextrm%7Bany%20random%20vector%7D)
+
+![(2)\ r\leftarrow A^T\times s](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%282%29%5C%20r%5Cleftarrow%20A%5ET%5Ctimes%20s)
+
+![(3)\ \textrm{if }\|r-s\|<\epsilon\textrm{ end.}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%283%29%5C%20%5Ctextrm%7Bif%20%7D%5C%7Cr-s%5C%7C%3C%5Cepsilon%5Ctextrm%7B%20end.%7D)
+
+![(4)\ s\leftarrow r\textrm{, goto 2}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%284%29%5C%20s%5Cleftarrow%20r%5Ctextrm%7B%2C%20goto%202%7D)
+
 ### Reference
 
 1. Page, L., Brin, S., Motwani, R., and Winograd, T. (1999). The PageRank citation ranking: Bringing order to the Web. published as a *technical report* on January 29, 1998.
 2. Brin, S., Page, L. (1998). The anatomy of a large-scale hypertextual Web search engine. *Computer Networks and ISDN Systems 30*, 107-117.
-3. Lawrence Page, U.S. patents 6,799,176 (2004) "Method for scoring documents in a linked database".
+3. Cho, J., Garcia-Molina H., Paepcke A., Raghavan, S. Searching the Web.
+4. Lawrence Page, U.S. patents 6,799,176 (2004) "Method for scoring documents in a linked database".
