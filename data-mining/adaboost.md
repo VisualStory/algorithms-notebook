@@ -10,10 +10,15 @@ AdaBoost
 **Process**:
 
 1 ![\mathcal{D}_1=\mathcal{D}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cmathcal%7BD%7D_1%3D%5Cmathcal%7BD%7D)
+
 2 **for** ![t=1,\dots,T](http://latex.codecogs.com/gif.latex?%5Cbg_white%20t%3D1%2C%5Cdots%2CT):
+
 3   ![h_t=L(\mathcal{D}_t)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_t%3DL%28%5Cmathcal%7BD%7D_t%29)
+
 4   ![\epsilon_t=\mathrm{Pr}_{\boldsymbol{x}\sim\mathcal{D}_{t,y}}\boldsymbol{I}[h_t(\boldsymbol{x})\neq y]](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cepsilon_t%3D%5Cmathrm%7BPr%7D_%7B%5Cboldsymbol%7Bx%7D%5Csim%5Cmathcal%7BD%7D_%7Bt%2Cy%7D%7D%5Cboldsymbol%7BI%7D%5Bh_t%28%5Cboldsymbol%7Bx%7D%29%5Cneq%20y%5D)
+
 5   ![\mathcal{D}_{t+1}=\mathrm{AdjustDistribution}(\mathcal{D}_t,\epsilon_t)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cmathcal%7BD%7D_%7Bt&plus;1%7D%3D%5Cmathrm%7BAdjustDistribution%7D%28%5Cmathcal%7BD%7D_t%2C%5Cepsilon_t%29)
+
 6 **end**
 
 **Output**: ![H(\boldsymbol{x})=\mathrm{CombineOutputs}(\{h_t(\boldsymbol{x})\})](http://latex.codecogs.com/gif.latex?%5Cbg_white%20H%28%5Cboldsymbol%7Bx%7D%29%3D%5Cmathrm%7BCombineOutputs%7D%28%5C%7Bh_t%28%5Cboldsymbol%7Bx%7D%29%5C%7D%29)
@@ -73,12 +78,19 @@ Output
 **Process**:
 
 1 ![\mathcal{D}_1(i)=1/m](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cmathcal%7BD%7D_1%28i%29%3D1/m)
+
 2 **for** ![t=1,\dots,T](http://latex.codecogs.com/gif.latex?%5Cbg_white%20t%3D1%2C%5Cdots%2CT):
+
 3    ![h_t=L(D,\mathcal{D}_t)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_t%3DL%28D%2C%5Cmathcal%7BD%7D_t%29)
+
 4    ![\epsilon_t=\mathrm{Pr}_{\boldsymbol{x}\sim\mathcal{D}_{t,y}}\boldsymbol{I}[h_t(\boldsymbol{x})\neq y]](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cepsilon_t%3D%5Cmathrm%7BPr%7D_%7B%5Cboldsymbol%7Bx%7D%5Csim%5Cmathcal%7BD%7D_%7Bt%2Cy%7D%7D%5Cboldsymbol%7BI%7D%5Bh_t%28%5Cboldsymbol%7Bx%7D%29%5Cneq%20y%5D)
+
 5   **if** ![\epsilon_t>0.5](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cepsilon_t%3E0.5) **then break**
+
 6 ![\alpha_t=\frac{1}{2}\ln\left(\frac{1-\epsilon_t}{\epsilon_t} \right )](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Calpha_t%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cleft%28%5Cfrac%7B1-%5Cepsilon_t%7D%7B%5Cepsilon_t%7D%20%5Cright%20%29)
+
 7 ![\begin{align*}\mathcal{D}_{t+1}(i)&=\frac{\mathcal{D}_t(i)}{Z_t}\times\begin{cases}\exp(-\alpha_t)\textrm{ if }h_t(\boldsymbol{x}_i)= y_i\\\exp(\alpha_t)\textrm{ if }h_t(\boldsymbol{x}_i)\neq y_i\end{cases}\\&=\frac{\mathcal{D}_t(i)\exp(-\alpha_ty_ih_t(\boldsymbol{x_i}))}{Z_t}\end{align*}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cbegin%7Balign*%7D%5Cmathcal%7BD%7D_%7Bt&plus;1%7D%28i%29%26%3D%5Cfrac%7B%5Cmathcal%7BD%7D_t%28i%29%7D%7BZ_t%7D%5Ctimes%5Cbegin%7Bcases%7D%5Cexp%28-%5Calpha_t%29%5Ctextrm%7B%20if%20%7Dh_t%28%5Cboldsymbol%7Bx%7D_i%29%3D%20y_i%5C%5C%5Cexp%28%5Calpha_t%29%5Ctextrm%7B%20if%20%7Dh_t%28%5Cboldsymbol%7Bx%7D_i%29%5Cneq%20y_i%5Cend%7Bcases%7D%5C%5C%26%3D%5Cfrac%7B%5Cmathcal%7BD%7D_t%28i%29%5Cexp%28-%5Calpha_ty_ih_t%28%5Cboldsymbol%7Bx_i%7D%29%29%7D%7BZ_t%7D%5Cend%7Balign*%7D)
+
 8 **end**
 
 **Output**: ![H(\boldsymbol{x})=\mathrm{sign}(\sum_{t=1}^{T}\alpha_th_t(\boldsymbol{x}))](http://latex.codecogs.com/gif.latex?%5Cbg_white%20H%28%5Cboldsymbol%7Bx%7D%29%3D%5Cmathrm%7Bsign%7D%28%5Csum_%7Bt%3D1%7D%5E%7BT%7D%5Calpha_th_t%28%5Cboldsymbol%7Bx%7D%29%29)
