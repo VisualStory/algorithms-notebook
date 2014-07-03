@@ -63,11 +63,11 @@ For ![m=1,2,\cdots,M](http://latex.codecogs.com/gif.latex?%5Cbg_white%20m%3D1%2C
 
 4 Set ![w_i\leftarrow w_i\cdot\exp\Big(\alpha^{(m)}\cdot\mathbb{I}\big(c_i\neq T^{(m)}(\boldsymbol{x}_i)\big)\Big)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20w_i%5Cleftarrow%20w_i%5Ccdot%5Cexp%5CBig%28%5Calpha%5E%7B%28m%29%7D%5Ccdot%5Cmathbb%7BI%7D%5Cbig%28c_i%5Cneq%20T%5E%7B%28m%29%7D%28%5Cboldsymbol%7Bx%7D_i%29%5Cbig%29%5CBig%29)
 
-5 **for** ![i=1,2,\dots,n](http://latex.codecogs.com/gif.latex?%5Cbg_white%20i%3D1%2C2%2C%5Cdots%2Cn).
+for ![i=1,2,\dots,n](http://latex.codecogs.com/gif.latex?%5Cbg_white%20i%3D1%2C2%2C%5Cdots%2Cn).
 
-6 Re-normalize ![w_i](http://latex.codecogs.com/gif.latex?%5Cbg_white%20w_i).
+5 Re-normalize ![w_i](http://latex.codecogs.com/gif.latex?%5Cbg_white%20w_i).
 
-**Output**
+**Output**:
 
 ![C(\boldsymbol{x})=\arg\max_k\sum_{m=1}^{M}\alpha^{(m)}\cdot\mathbb{I}(T^{(m)}(\boldsymbol{x})=k)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20C%28%5Cboldsymbol%7Bx%7D%29%3D%5Carg%5Cmax_k%5Csum_%7Bm%3D1%7D%5E%7BM%7D%5Calpha%5E%7B%28m%29%7D%5Ccdot%5Cmathbb%7BI%7D%28T%5E%7B%28m%29%7D%28%5Cboldsymbol%7Bx%7D%29%3Dk%29).
 
@@ -137,7 +137,7 @@ Let ![B=\{(i,y):i\in \{1,\dots,m\},y\neq y_i\}](http://latex.codecogs.com/gif.la
 
 1 Call **WeakLearn**, providing it with mislabel distribution ![D_t](http://latex.codecogs.com/gif.latex?%5Cbg_white%20D_t)
 
-2 Get back a hypothesis ![h_t:X\times Y\rightarrow[0,1](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_t%3AX%5Ctimes%20Y%5Crightarrow%5B0%2C1%5D)
+2 Get back a hypothesis ![h_t:X\times Y\rightarrow[0,1]](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_t%3AX%5Ctimes%20Y%5Crightarrow%5B0%2C1%5D)
 
 3 Calculate the pseudo-loss of ![h_t](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_t): ![\epsilon_t=\frac{1}{2}\sum_{(i,y)\in B}D_t(i,y)(1-h_t(x_i,y_i)+h_t(x_i,y))](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cepsilon_t%3D%5Cfrac%7B1%7D%7B2%7D%5Csum_%7B%28i%2Cy%29%5Cin%20B%7DD_t%28i%2Cy%29%281-h_t%28x_i%2Cy_i%29&plus;h_t%28x_i%2Cy%29%29).
 
