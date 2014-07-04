@@ -148,3 +148,19 @@ Let ![B=\{(i,y):i\in \{1,\dots,m\},y\neq y_i\}](http://latex.codecogs.com/gif.la
 where ![Z_t](http://latex.codecogs.com/gif.latex?%5Cbg_white%20Z_t) is a normalization constant (chosen so that ![D_{t+1}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20D_%7Bt&plus;1%7D) will be a distribution).
 
 **Output** the hypothesis: ![h_{fin}(x)=\arg\max_{y\in Y}\sum_{t=1}^{T}\left(\log\frac{1}{\beta_t}\right)h_t(x,y)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20h_%7Bfin%7D%28x%29%3D%5Carg%5Cmax_%7By%5Cin%20Y%7D%5Csum_%7Bt%3D1%7D%5E%7BT%7D%5Cleft%28%5Clog%5Cfrac%7B1%7D%7B%5Cbeta_t%7D%5Cright%29h_t%28x%2Cy%29).
+
+### Real AdaBoost
+
+> Freidman, Hastie, Tibshirani. Additive Logistic Regression: A Statistical View of Boosting
+
+1 Start with weights ![w_i=1/N](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20w_i%3D1/N), ![i=1,2,\dots,N](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20i%3D1%2C2%2C%5Cdots%2CN).
+
+2 Repeat for ![m=1,2,\dots,M](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20m%3D1%2C2%2C%5Cdots%2CM):
+
+(a) Fit the classifier to obtain a class probability estimate ![p_m(x)=\hat{P}_w(y=1|x)\in[0,1]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20p_m%28x%29%3D%5Chat%7BP%7D_w%28y%3D1%7Cx%29%5Cin%5B0%2C1%5D), using the weights ![w_i](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20w_i) on the training data.
+
+(b) Set ![f_m(x)\leftarrow\frac{1}{2}\log\frac{p_m(x)}{1-p_m(x)}\in R](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20f_m%28x%29%5Cleftarrow%5Cfrac%7B1%7D%7B2%7D%5Clog%5Cfrac%7Bp_m%28x%29%7D%7B1-p_m%28x%29%7D%5Cin%20R).
+
+(c) Set ![w_i\leftarrow w_i\exp[-y_if_m(x_i)]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20w_i%5Cleftarrow%20w_i%5Cexp%5B-y_if_m%28x_i%29%5D), ![i=1,2,\dots,N](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20i%3D1%2C2%2C%5Cdots%2CN), and renormalize so that ![\sum_i w_i=1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Csum_i%20w_i%3D1).
+
+3 Output the classifier ![\sign[\sum_{m=1}^{M}f_m(x)]](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Csign%5B%5Csum_%7Bm%3D1%7D%5E%7BM%7Df_m%28x%29%5D)
