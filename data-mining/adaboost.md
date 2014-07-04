@@ -162,7 +162,7 @@ Since ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%
 
 As can be seen, ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) simply performs the optimal classification of x under the distribution ![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29). Therefore,![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29) is the desired distribution for a hypothesis minimizing 0/1-loss.
 
-So, when the hypothesish(x) has been learned and ![\alpha=\frac{1}{2}\ln\frac{\epsilon}{1-\epsilon}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7B%5Cepsilon%7D%7B1-%5Cepsilon%7D) has been determined in the current round, the distribution for the next round should be
+So, when the hypothesis h(x) has been learned and ![\alpha=\frac{1}{2}\ln\frac{\epsilon}{1-\epsilon}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7B%5Cepsilon%7D%7B1-%5Cepsilon%7D) has been determined in the current round, the distribution for the next round should be
 
 ![\begin{align*}\mathcal{D}_{t+1}(x)&=e^{-y(H(x)+\alpha h(x))}P(y|x)\\&=e^{-yH(x)}P(y|x)\cdot e^{-\alpha yh(x)}\\&=\mathcal{D}_t(x)\cdot e^{-\alpha yh(x)}\end{align*}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Balign*%7D%5Cmathcal%7BD%7D_%7Bt&plus;1%7D%28x%29%26%3De%5E%7B-y%28H%28x%29&plus;%5Calpha%20h%28x%29%29%7DP%28y%7Cx%29%5C%5C%26%3De%5E%7B-yH%28x%29%7DP%28y%7Cx%29%5Ccdot%20e%5E%7B-%5Calpha%20yh%28x%29%7D%5C%5C%26%3D%5Cmathcal%7BD%7D_t%28x%29%5Ccdot%20e%5E%7B-%5Calpha%20yh%28x%29%7D%5Cend%7Balign*%7D)
 
@@ -172,7 +172,7 @@ But, why optimizing the exponential loss works for minimizing the 0/1-loss?
 
 Actually, we can see that
 
-![h^*(x)=\arg\min_h\mathbb{E}_{x\sim\mathcal{D},y}[e^{-yh(x)}|x]=\frac{1}{2}ln\frac{P(y=1|x)}{P(y=-1|x)}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20h%5E*%28x%29%3D%5Carg%5Cmin_h%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%2Cy%7D%5Be%5E%7B-yh%28x%29%7D%7Cx%5D%3D%5Cfrac%7B1%7D%7B2%7Dln%5Cfrac%7BP%28y%3D1%7Cx%29%7D%7BP%28y%3D-1%7Cx%29%7D)
+![h^*(x)=\arg\min_h\mathbb{E}_{x\sim\mathcal{D},y}[e^{-yh(x)}|x]=\frac{1}{2}\ln\frac{P(y=1|x)}{P(y=-1|x)}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20h%5E*%28x%29%3D%5Carg%5Cmin_h%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%2Cy%7D%5Be%5E%7B-yh%28x%29%7D%7Cx%5D%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7BP%28y%3D1%7Cx%29%7D%7BP%28y%3D-1%7Cx%29%7D)
 
 and therefore we have
 
