@@ -154,7 +154,7 @@ Note that ![e^{-yH(x)}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7
 
 we can rewrite the expectation using a new term ![w(x,y)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20w%28x%2Cy%29), which is drawn from ![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29), as
 
-![H^*(x)=\arg\max_h\mathbb{E}_{w(x,y)\sim e^{-yH(x)}P(y|x)}[yh(x)|x]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20H%5E*%28x%29%3D%5Carg%5Cmax_h%5Cmathbb%7BE%7D_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%5Byh%28x%29%7Cx%5D)
+![h^*(x)=\arg\max_h\mathbb{E}_{w(x,y)\sim e^{-yH(x)}P(y|x)}[yh(x)|x]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20h%5E*%28x%29%3D%5Carg%5Cmax_h%5Cmathbb%7BE%7D_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%5Byh%28x%29%7Cx%5D)
 
 Since ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) must be +1 or -1, the solution to the optimization is that ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) holds the same sign with y|x, that is,
 
