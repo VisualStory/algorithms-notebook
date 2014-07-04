@@ -95,6 +95,93 @@ for ![i=1,2,\dots,n](http://latex.codecogs.com/gif.latex?%5Cbg_white%20i%3D1%2C2
 
 **Output**: ![H(\boldsymbol{x})=\mathrm{sign}(\sum_{t=1}^{T}\alpha_th_t(\boldsymbol{x}))](http://latex.codecogs.com/gif.latex?%5Cbg_white%20H%28%5Cboldsymbol%7Bx%7D%29%3D%5Cmathrm%7Bsign%7D%28%5Csum_%7Bt%3D1%7D%5E%7BT%7D%5Calpha_th_t%28%5Cboldsymbol%7Bx%7D%29%29)
 
+#### Proof
+
+AdaBoost generates a sequence of hypotheses and combines them with weights, which can be regarded as anadditive weighted combination in the form of 
+
+![H(x)=\sum_{t=1}^{T}\alpha_th_t(x)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20H%28x%29%3D%5Csum_%7Bt%3D1%7D%5E%7BT%7D%5Calpha_th_t%28x%29).
+
+From this view, AdaBoost actually solves two problems, that is, how to generate the hypothesesht’s and how to determine the proper weights ![\alpha_t](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Calpha_t)’s.
+
+In order to have a highly efficient error reduction process, we try to minimize an exponential loss
+
+![loss_{\exp}(h)=\mathbb{E}_{x\sim\mathcal{D},y}[e^{-yh(x)}]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20loss_%7B%5Cexp%7D%28h%29%3D%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%2Cy%7D%5Be%5E%7B-yh%28x%29%7D%5D)
+
+where ![yh(x)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20yh%28x%29) is called as the **classification margin** of the hypothesis.
+
+Suppose a set of hypotheses as well as their weights have already been obtained, and let H denote the combined hypothesis. Now, one more hypothesis h will be generated and is to be combined with H to form H+αh. The loss after the combination will be
+
+![loss_{\exp}(H+\alpha h)=\mathbb{E}_{x\sim\mathcal{D},y}[e^{-y(H(x)+\alpha h(x))}]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20loss_%7B%5Cexp%7D%28H&plus;%5Calpha%20h%29%3D%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%2Cy%7D%5Be%5E%7B-y%28H%28x%29&plus;%5Calpha%20h%28x%29%29%7D%5D)
+
+The loss can be decomposed to each instance, which is called pointwise loss, as
+
+![loss_{\exp}(H+\alpha h|x)=\mathbb{E}_y[e^{-y(H(x)+\alpha h(x))}|x]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20loss_%7B%5Cexp%7D%28H&plus;%5Calpha%20h%7Cx%29%3D%5Cmathbb%7BE%7D_y%5Be%5E%7B-y%28H%28x%29&plus;%5Calpha%20h%28x%29%29%7D%7Cx%5D)
+
+Since y and h(x) must be +1 or -1, we can expand the expectation as
+
+![loss_{\exp}(H+\alpha h|x)=e^{-yH(x)}\big(e^{-\alpha}P(y=h(x)|x)+e^{\alpha}P(y\neq h(x)|x)\big)](http://latex.codecogs.com/gif.latex?loss_%7B%5Cexp%7D%28H&plus;%5Calpha%20h%7Cx%29%3De%5E%7B-yH%28x%29%7D%5Cbig%28e%5E%7B-%5Calpha%7DP%28y%3Dh%28x%29%7Cx%29&plus;e%5E%7B%5Calpha%7DP%28y%5Cneq%20h%28x%29%7Cx%29%5Cbig%29)
+
+Suppose we have already generated h, and thus the weight α that minimizes the
+loss can be found when the derivative of the loss equals zero, that is,
+
+![\begin{align*}\frac{\partial loss_{\exp}(H+\alpha h|x)}{\partial\alpha}&=e^{-yH(x)}\big(-e^{-\alpha}P(y=h(x)|x)+e^{\alpha}P(y\neq h(x)|x)\big)\\&=0\end{align*}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%5Cfrac%7B%5Cpartial%20loss_%7B%5Cexp%7D%28H&plus;%5Calpha%20h%7Cx%29%7D%7B%5Cpartial%5Calpha%7D%26%3De%5E%7B-yH%28x%29%7D%5Cbig%28-e%5E%7B-%5Calpha%7DP%28y%3Dh%28x%29%7Cx%29&plus;e%5E%7B%5Calpha%7DP%28y%5Cneq%20h%28x%29%7Cx%29%5Cbig%29%5C%5C%26%3D0%5Cend%7Balign*%7D)
+
+and the solution is
+
+![\alpha=\frac{1}{2}\ln\frac{P(y=h(x)|x)}{P(y\neq h(x)|x)}](http://latex.codecogs.com/gif.latex?%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7BP%28y%3Dh%28x%29%7Cx%29%7D%7BP%28y%5Cneq%20h%28x%29%7Cx%29%7D)
+
+By taking an expectation overx, that is, solving ![\frac{\partial loss_{\exp}(H+\alpha h)}{\alpha}=0](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cfrac%7B%5Cpartial%20loss_%7B%5Cexp%7D%28H&plus;%5Calpha%20h%29%7D%7B%5Calpha%7D%3D0), and denoting ![\epsilon=\mathbb{E}_{x\sim\mathcal{D}}[y\neq h(x)]](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cepsilon%3D%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%7D%5By%5Cneq%20h%28x%29%5D), we get
+
+![\alpha=\frac{1}{2}\ln\frac{\epsilon}{1-\epsilon}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7B%5Cepsilon%7D%7B1-%5Cepsilon%7D)
+
+which is the way of determining ![\alpha_t](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Calpha_t) in AdaBoost.
+
+Now let’s consider how to generate h. We need to consider what hypothesis is desired for the next round, and then generate an instance distribution to achieve this hypothesis.
+
+We can expand the pointwise loss to second order:
+
+![\begin{align*}loss_{\exp}(H+h|x)&\approx\mathbb{E}_y[e^{-yH(x)}(1-yh(x)+y^2h(x)^2/2)|x]\\&=\mathbb{E}_y[e^{-yH(x)}-yh(x)+1/2)|x]\end{align*}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Balign*%7Dloss_%7B%5Cexp%7D%28H&plus;h%7Cx%29%26%5Capprox%5Cmathbb%7BE%7D_y%5Be%5E%7B-yH%28x%29%7D%281-yh%28x%29&plus;y%5E2h%28x%29%5E2/2%29%7Cx%5D%5C%5C%26%3D%5Cmathbb%7BE%7D_y%5Be%5E%7B-yH%28x%29%7D-yh%28x%29&plus;1/2%29%7Cx%5D%5Cend%7Balign*%7D)
+
+since ![y^2=1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20y%5E2%3D1) and ![h(x)^2=1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%28x%29%5E2%3D1).
+
+Then a perfect hypothesis is
+
+![\begin{align*}h^*(x)&=\arg\min_h loss_{\exp}(H+h|x)=\arg\max_h\mathbb{E}[e^{-yH(x)}yh(x)|x]\\&=\arg\max_h e^{-H(x)}P(y=1|x)\cdot 1\cdot h(x)+e^{H(x)}P(y=-1|x)\cdot(-1)\cdot h(x)\end{align*}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Balign*%7Dh%5E*%28x%29%26%3D%5Carg%5Cmin_h%20loss_%7B%5Cexp%7D%28H&plus;h%7Cx%29%3D%5Carg%5Cmax_h%5Cmathbb%7BE%7D%5Be%5E%7B-yH%28x%29%7Dyh%28x%29%7Cx%5D%5C%5C%26%3D%5Carg%5Cmax_h%20e%5E%7B-H%28x%29%7DP%28y%3D1%7Cx%29%5Ccdot%201%5Ccdot%20h%28x%29&plus;e%5E%7BH%28x%29%7DP%28y%3D-1%7Cx%29%5Ccdot%28-1%29%5Ccdot%20h%28x%29%5Cend%7Balign*%7D)
+
+Note that ![e^{-yH(x)}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7D) is a constant in terms of h(x). By normalizing the expectation as
+
+![h^*(x)&=\arg\max_h \frac{e^{-H(x)}P(y=1|x)\cdot 1\cdot h(x)+e^{H(x)}P(y=-1|x)\cdot(-1)\cdot h(x)}{e^{-H(x)}P(y=1|x)+e^{H(x)}P(y=-1|x)}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20h%5E*%28x%29%26%3D%5Carg%5Cmax_h%20%5Cfrac%7Be%5E%7B-H%28x%29%7DP%28y%3D1%7Cx%29%5Ccdot%201%5Ccdot%20h%28x%29&plus;e%5E%7BH%28x%29%7DP%28y%3D-1%7Cx%29%5Ccdot%28-1%29%5Ccdot%20h%28x%29%7D%7Be%5E%7B-H%28x%29%7DP%28y%3D1%7Cx%29&plus;e%5E%7BH%28x%29%7DP%28y%3D-1%7Cx%29%7D)
+
+we can rewrite the expectation using a new term ![w(x,y)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20w%28x%2Cy%29), which is drawn from ![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29), as
+
+![H^*(x)=\arg\max_h\mathbb{E}_{w(x,y)\sim e^{-yH(x)}P(y|x)}[yh(x)|x]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20H%5E*%28x%29%3D%5Carg%5Cmax_h%5Cmathbb%7BE%7D_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%5Byh%28x%29%7Cx%5D)
+
+Since ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) must be +1 or -1, the solution to the optimization is that ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) holds the same sign with y|x, that is,
+
+![\begin{align*}h^*(x)&=\mathbb{E}_{w(x,y)\sim e^{-yH(x)}P(y|x)}\\&=P_{w(x,y)\sim e^{-yH(x)}P(y|x)}(y=1|x)-P_{w(x,y)\sim e^{-yH(x)}P(y|x)}(y=-1|x)\end{align*}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Balign*%7Dh%5E*%28x%29%26%3D%5Cmathbb%7BE%7D_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%5C%5C%26%3DP_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%28y%3D1%7Cx%29-P_%7Bw%28x%2Cy%29%5Csim%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29%7D%28y%3D-1%7Cx%29%5Cend%7Balign*%7D)
+
+As can be seen, ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) simply performs the optimal classification of x under the distribution ![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29). Therefore,![e^{-yH(x)}P(y|x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20e%5E%7B-yH%28x%29%7DP%28y%7Cx%29) is the desired distribution for a hypothesis minimizing 0/1-loss.
+
+So, when the hypothesish(x) has been learned and ![\alpha=\frac{1}{2}\ln\frac{\epsilon}{1-\epsilon}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D%5Cln%5Cfrac%7B%5Cepsilon%7D%7B1-%5Cepsilon%7D) has been determined in the current round, the distribution for the next round should be
+
+![\begin{align*}\mathcal{D}_{t+1}(x)&=e^{-y(H(x)+\alpha h(x))}P(y|x)\\&=e^{-yH(x)}P(y|x)\cdot e^{-\alpha yh(x)}\\&=\mathcal{D}_t(x)\cdot e^{-\alpha yh(x)}\end{align*}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Balign*%7D%5Cmathcal%7BD%7D_%7Bt&plus;1%7D%28x%29%26%3De%5E%7B-y%28H%28x%29&plus;%5Calpha%20h%28x%29%29%7DP%28y%7Cx%29%5C%5C%26%3De%5E%7B-yH%28x%29%7DP%28y%7Cx%29%5Ccdot%20e%5E%7B-%5Calpha%20yh%28x%29%7D%5C%5C%26%3D%5Cmathcal%7BD%7D_t%28x%29%5Ccdot%20e%5E%7B-%5Calpha%20yh%28x%29%7D%5Cend%7Balign*%7D)
+
+which is the way of updating instance distribution in AdaBoost.
+
+But, why optimizing the exponential loss works for minimizing the 0/1-loss? 
+
+Actually, we can see that
+
+![h^*(x)=\arg\min_h\mathbb{E}_{x\sim\mathcal{D},y}[e^{-yh(x)}|x]=\frac{1}{2}ln\frac{P(y=1|x)}{P(y=-1|x)}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20h%5E*%28x%29%3D%5Carg%5Cmin_h%5Cmathbb%7BE%7D_%7Bx%5Csim%5Cmathcal%7BD%7D%2Cy%7D%5Be%5E%7B-yh%28x%29%7D%7Cx%5D%3D%5Cfrac%7B1%7D%7B2%7Dln%5Cfrac%7BP%28y%3D1%7Cx%29%7D%7BP%28y%3D-1%7Cx%29%7D)
+
+and therefore we have
+
+![sign(h^*(x))=\arg\max_y P(y|x)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20sign%28h%5E*%28x%29%29%3D%5Carg%5Cmax_y%20P%28y%7Cx%29)
+
+which implies that the optimal solution to the exponential loss achieves the minimum Bayesian error for the classification problem.
+
+Moreover, we can see that the function ![h^*(x)](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20h%5E*%28x%29) which minimizes the exponential loss is the logistic regression model up to a factor 2. So, by ignoring the factor 1/2, AdaBoost can also be viewed as fitting an additive logistic regression model.
+
 ### Algorithm AdaBoost.M1
 
 **Input**
